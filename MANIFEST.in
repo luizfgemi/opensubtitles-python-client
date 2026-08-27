@@ -1,0 +1,4 @@
+include LICENSE
+include TODO.md
+recursive-include openapi *.json
+recursive-include docs *.md
