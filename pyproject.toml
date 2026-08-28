@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "opensubtitles-python-client"
-version = "0.1.0"
+version = "0.1.1"
 description = "Python client generated from the OpenSubtitles API OpenAPI specification"
 authors = ["luizfgemi"]
 license = "MIT"
