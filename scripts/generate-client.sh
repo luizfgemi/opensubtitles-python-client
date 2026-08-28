@@ -12,4 +12,4 @@ docker run --rm \
   -g python \
   -o /out \
   --package-name opensubtitles_client \
-  --additional-properties=packageVersion=0.1.1,projectName=opensubtitles-python-client
+  --additional-properties=packageVersion=0.1.2,projectName=opensubtitles-python-client

@@ -13,6 +13,8 @@
 """  # noqa: E501
 
 
+from pathlib import Path
+
 from setuptools import setup, find_packages  # noqa: H301
 
 # To install the library, run the following
@@ -22,7 +24,7 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "opensubtitles-python-client"
-VERSION = "0.1.1"
+VERSION = "0.1.2"
 PYTHON_REQUIRES = ">= 3.8"
 REQUIRES = [
     "urllib3 >= 1.25.3, < 3.0.0",
@@ -42,9 +44,7 @@ setup(
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
     license="MIT",
-    long_description_content_type='text/markdown',
-    long_description="""\
-    Explore Open Subtitles API here
-    """,  # noqa: E501
+    long_description=Path("README.md").read_text(encoding="utf-8"),
+    long_description_content_type="text/markdown",
     package_data={"opensubtitles_client": ["py.typed"]},
 )

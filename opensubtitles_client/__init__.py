@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 # import apis into sdk package
 from opensubtitles_client.api.ai_transcribe_api import AITranscribeApi
