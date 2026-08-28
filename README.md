@@ -10,9 +10,16 @@ Python client for the [OpenSubtitles API](https://opensubtitles.stoplight.io/).
 pip install opensubtitles-python-client
 ```
 
+## Before you start
+
+You need an [OpenSubtitles account](https://www.opensubtitles.com/) and an API key created for your application.
+
+- **API key:** identifies your application and is required for API requests.
+- **JWT token:** identifies a logged-in user. Obtain it with `AuthenticationApi.login` and use it only for authenticated operations, such as downloading subtitles. VIP access is associated with this user token.
+
 ## Search subtitles
 
-Create an API key at OpenSubtitles, then pass it to the client. The library does not read environment variables or configuration files.
+Pass the API key to the client. The library does not read environment variables or configuration files.
 
 ```python
 import opensubtitles_client
