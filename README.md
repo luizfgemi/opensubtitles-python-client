@@ -1,4 +1,3 @@
-Condensed README validated: 61 lines.
 # OpenSubtitles Python Client
 
 Typed Python client for the OpenSubtitles REST API, generated from the OpenAPI 3.0.3 specification.
