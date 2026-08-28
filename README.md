@@ -1,60 +1,50 @@
 # OpenSubtitles Python Client
 
-Typed Python client for the OpenSubtitles REST API, generated from the OpenAPI 3.0.3 specification.
+Python client for the [OpenSubtitles API](https://opensubtitles.stoplight.io/).
 
-> This is an independent client library. It is not affiliated with or endorsed by OpenSubtitles.
+> Independent client library; not affiliated with or endorsed by OpenSubtitles.
 
-## Installation
+## Install
 
 ```bash
 pip install opensubtitles-python-client
 ```
 
-To upgrade:
+## Search subtitles
 
-```bash
-pip install --upgrade opensubtitles-python-client
-```
-
-## Quick start
+Create an API key at OpenSubtitles, then pass it to the client. The library does not read environment variables or configuration files.
 
 ```python
 import opensubtitles_client
-from opensubtitles_client.rest import ApiException
 
 configuration = opensubtitles_client.Configuration()
 configuration.api_key["Api-Key"] = "your-api-key"
 
-with opensubtitles_client.ApiClient(configuration) as api_client:
-    subtitles = opensubtitles_client.SubtitlesApi(api_client)
-    try:
-        response = subtitles.subtitles(query="The Matrix", languages="en")
-        print(response)
-    except ApiException as error:
-        print(error)
+with opensubtitles_client.ApiClient(configuration) as client:
+    api = opensubtitles_client.SubtitlesApi(client)
+    response = api.subtitles(query="The Matrix", languages="en")
+    print(response)
 ```
 
-For authenticated endpoints, set `configuration.access_token` to the JWT returned by `AuthenticationApi.login`.
+## Download a subtitle
 
-## API coverage
+Downloading requires both your API key and the JWT returned by `AuthenticationApi.login`.
 
-The package includes all 23 operations described by the bundled OpenAPI specification: authentication, subtitle search/download, discovery, metadata, account/credits, AI translation/transcription, language detection, and filename parsing.
+```python
+configuration.access_token = "your-jwt"
 
-- [API endpoint reference](docs/)
-- [Model reference](docs/)
-- [OpenAPI specification](openapi/open_api.json)
-- [Release notes](https://github.com/luizfgemi/opensubtitles-python-client/releases)
-- [PyPI project](https://pypi.org/project/opensubtitles-python-client/)
-
-## Development
-
-Regenerate the client from the bundled specification with Docker:
-
-```bash
-./scripts/generate-client.sh
+with opensubtitles_client.ApiClient(configuration) as client:
+    api = opensubtitles_client.DownloadApi(client)
+    response = api.download(body={"file_id": 123})
+    print(response.link)  # Temporary download URL
 ```
 
-See [TODO.md](TODO.md) for known follow-up work and an upstream specification caveat.
+## Reference
+
+- [Endpoint and model documentation](docs/)
+- [Bundled OpenAPI specification](openapi/open_api.json)
+- [PyPI package](https://pypi.org/project/opensubtitles-python-client/)
+- [Releases](https://github.com/luizfgemi/opensubtitles-python-client/releases)
 
 ## License
 
